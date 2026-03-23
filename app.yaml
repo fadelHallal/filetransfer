@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kin: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-app
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - image: busybox
+        name: busybox
+       resources: {}
+status: {}
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2026-03-23T22:47:49Z"
+  labels:
+    app: my-app
+  name: my-app
+  namespace: compreview-todo
+  resourceVersion: "181793"
+  uid: d9c48d19-d423-447b-8a59-f7ce6be6ddfc
+spec:
+  clusterIP: 172.30.166.240
+  clusterIPs:
+  - 172.30.166.240
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: my-app
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
